@@ -1,0 +1,209 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+	<head>
+		<title>Roots</title>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		
+		<!-- Bootstrapin tarvitsemat linkitykset -->
+		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.2.1/dist/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+
+		<!-- Oma css-tiedosto -->
+        <link rel="stylesheet" href="tyyli.css">
+
+		<!--Mapboxin tarvitsemat linkitykset-->
+		<link href="https://api.mapbox.com/mapbox-gl-js/v3.2.0/mapbox-gl.css" rel="stylesheet">
+		<script src="https://api.mapbox.com/mapbox-gl-js/v3.2.0/mapbox-gl.js"></script>
+		
+	</head>
+
+	<body onload="LoadInitialContent()">
+		
+		<!-- Otsikkopalkki -->
+		<div class="container-fluid bg-white">
+			<div class="row">
+				<div class="col-sm-12 p-3 row">
+					<a href="index.html">
+						<img src="./ui/roots_logo_pieni.png" alt="Roots" width="145px" height="145px">
+					</a>
+				<div class="col-sm-8 p-3  text-light align-self-center">
+					<h1 class="roots" >Roots</h1>
+					<blockquote class="blockquote">
+					<h5 class="mb-0 juurelle">Juurelta juurelle</h5>
+					</blockquote>
+				</div>
+
+				<div class="col-sm-12 p-0">
+					<div class="box mt-2 h-100 d-flex justify-content-end">
+<!-- Navigointipalkki -->
+<div class="navbar navbar-expand-lg navbar-light p">
+	<ul class="navbar-nav mr-auto ">
+		<li class="nav-item ">
+		  <a class="nav-link text-black" href="#" type="button" class="text-dark" onclick="textChange(0) ">Retkeilijä</a>
+		</li>
+		<li class="nav-item">
+		  <a class="nav-link text-black" href="#" type="button" class="text-dark" onclick="textChange(1)">Kohteet</a>
+		</li>
+		<li class="nav-item">
+		  <a class="nav-link text-black" href="#" type="button" class="text-dark" onclick="textChange(2)">Varusteet</a>
+		</li>
+</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	
+		<!-- Sisältöalue -->
+		<div class="container-fluid bg-white min-vh-100 ">
+			<div class="row" id="roots_page">
+			</div>
+
+<!-- Navigointipalkki -->
+<div class="navbar navbar-expand-lg navbar-light p">
+	<ul class="navbar-nav mr-auto ">
+		<li class="nav-item ">
+		  <a class="nav-link text-black" href="#" type="button" class="text-dark" onclick="textChange(0) ">Retkeilijä</a>
+		</li>
+		<li class="nav-item">
+		  <a class="nav-link text-black" href="#" type="button" class="text-dark" onclick="textChange(1)">Kohteet</a>
+		</li>
+		<li class="nav-item">
+		  <a class="nav-link text-black" href="#" type="button" class="text-dark" onclick="textChange(2)">Varusteet</a>
+		</li>
+</div>
+			<div id="BrCr">
+				<nav aria-label="breadcrumb">
+					<ol class="breadcrumb  bg-secondary text-white">
+						<li>You're at:&nbsp;</li>
+						<li class="breadcrumb-item active bg-secondary text-white"aria-current="page">Retkeilijä</li>
+					</ol>
+				</nav>
+			</div>
+
+		</div>
+		
+		<!-- JavaScript-toiminnallisuus -->
+
+		<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+		<script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.6/dist/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
+		<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.2.1/dist/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
+
+		<script>
+		
+		//Sisällön vaihtaminen navigointipalkin valintojen perusteella
+
+		var textChange = function(index) {
+			if (index == 0)
+			{
+				document.getElementById("roots_page").innerHTML = indexHTML;
+				document.getElementById("BrCr").innerHTML = indexBrCrHTML;
+			}
+			else if (index == 1)
+			{
+				document.getElementById("roots_page").innerHTML = showreelHTML;
+				document.getElementById("BrCr").innerHTML = showreelBrCrHTML;
+			}
+			else if (index == 2)
+			{
+				document.getElementById("roots_page").innerHTML = resourcesHTML;
+				document.getElementById("BrCr").innerHTML = resourcesBrCrHTML
+			}
+		};
+
+		//Mapboxin kartan luonti
+		//Roots_Oulanka_pohjoinenlahto uploaded dataset: superkaisu.cltokovj901ew1uqrtvx4yema-2a8ji
+		//Muista vielä confaa zoomi ja keskipiste
+		//https://docs.mapbox.com/help/troubleshooting/adjust-tileset-zoom-extent/
+		// Täältä pääsee jakamaan linkkii??
+		//https://studio.mapbox.com/tilesets/superkaisu.cltokovj901ew1uqrtvx4yema-2a8ji/#0.75/0/29.1
+
+		mapboxgl.accessToken = 'pk.eyJ1Ijoic3VwZXJrYWlzdSIsImEiOiJjbHRvazh1cTUwZjNlMmpueThkODliNmIxIn0.wn7oRotjKyW1ep01XRJs-g';
+    		const map = new mapboxgl.Map({
+        	container: 'map', // container ID
+        	center: [-74.5, 40], // starting position [lng, lat]
+        	zoom: 9 // starting zoom
+   		 });
+
+		// Sisältötekstit
+
+		var indexHTML = "<img src=\"./ui/tausta.jpg\" alt=\"View from Kuopionlahti\" width=\"100%\" height=\"100%\">\
+							<div class=\"col-sm-12  bg-light text-dark min-vh-100\">\
+								<h3 class=\"mainpage-own\">Retkillä kotimaan kansallispuistoissa</h3>\
+								<br>\
+									<div class=\"col-sm-4 container\">\
+									<div class=\"embed-responsive embed-responsive-1by1\">\
+										<video class=\"embed-responsive-item\" src=\"./ui/Hidastettu_kahvikuppibomerang.mp4\" autoplay>\
+										</video>\
+									</div>\
+									</div>\
+									<div class=\"col-sm-8 container\">\
+										<p>\ Moikka! Olen Kaisu Suurniemi.\
+											<br>\
+											Tietojenkäsittelyn opiskelija.\ <br><br>\
+											Olen harrastanut metsissä oleskelua koko ikäni, välillä enemmän, välillä vähemmän.\ <br><br>\
+											Tavoitteenani on käydä Suomen jokaisessa kansallispuistossa, ja toki kiertää muitakin luontokohteita siinä sivussa.\
+											Kirjoitan blogia näistä reissuista, asioista, joita olen oppinut retkeillessäni, varusteista ja ruuasta sekä muusta.\ <br><br>\
+											Täältä et löydä grammanviilausta tai hifi-varusteita.\
+											Kaikki on toteutettu aika minimaalisella budjetilla ja varuste-arsenaalikin täydentyy vuosien kuluessa.\
+										</p>\
+										</div>\
+										<br>\
+										<div class=\"col-sm-12 container\">\
+											<img src=\"./ui/retkeilija_nelio.jpg\" alt=\"Retkeilijä\ height=\"400px\" width=\"200px\" style=\"border-radius: 50%\">\
+										</div>\
+										</div>";
+		
+		var showreelHTML = "<div class=\"col-sm-12 p-3 bg-light text-dark min-vh-100 \">\
+							<div>\
+							  <h5 id=\"Perception\">Kallavesi</h5>\
+							  <img src=\"./ui/kallavesi.jpg\" alt=\"Kallavesi\" height=\"200px\" width=\"200px\">\
+							  <p></p>\
+							  <h5 id=\"Knowledge Representation\">Oulanka</h5>\
+							  <img src=\"./ui/oulanka.jpg\" alt=\"Oulanka\" height=\"200px\" width=\"200px\">\
+							  <br>\
+							  <div class=\"row w-100\">\
+								<div id=\"map\"></div>\
+  							</div>\
+							  <p></p>\
+							  <h5 id=\"Reasoning and Problem Solving\">Rokua</h5>\
+							  <img> src=\"./ui/rokua.jpg\" alt=\"Rokua\" height=\"200px\" width=\"200px\">\
+							  <p></p>\
+							  </div>\
+							</div>\
+						</div>";
+		
+							
+		var resourcesHTML = "<div class=\"col-sm-12 bg-light text-dark min-vh-100\">\
+						Links here, please.\
+						</div>";		
+	
+
+		// Breadcrumb-tekstit
+						
+		var indexBrCrHTML = "<nav aria-label=\"breadcrumb\">\
+								<ol class=\"breadcrumb bg-secondary text-white\">\
+									<li class=\" bg-secondary text-white\">You're at:&nbsp;</li>\
+									<li class=\"breadcrumb-item active bg-secondary text-white\"aria-current=\"page\">Retkeilijä</li>\
+								</ol>\
+							</nav>";
+		var showreelBrCrHTML = "<nav aria-label=\"breadcrumb\">\
+								<ol class=\"breadcrumb bg-secondary text-white\">\
+									<li class=\" bg-secondary text-white\">You're at:&nbsp;</li>\
+									<li class=\"breadcrumb-item active bg-secondary text-white\"aria-current=\"page\">Kohteet</li>\
+								</ol>\
+							</nav>";
+		var resourcesBrCrHTML = "<nav aria-label=\"breadcrumb\">\
+								<ol class=\"breadcrumb bg-secondary text-white\">\
+									<li class=\" bg-secondary text-white\">You're at:&nbsp;</li>\
+									<li class=\"breadcrumb-item active bg-secondary text-white\"aria-current=\"page\">Varusteet</li>\
+								</ol>\
+							</nav>";
+		
+
+		function LoadInitialContent() {
+		  document.getElementById("roots_page").innerHTML = indexHTML;
+		}
+	  </script>
+	</body>
+</html>
