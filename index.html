@@ -12,10 +12,6 @@
 		<!-- Oma css-tiedosto -->
         <link rel="stylesheet" href="tyyli.css">
 
-		<!--Mapboxin tarvitsemat linkitykset-->
-		<link href="https://api.mapbox.com/mapbox-gl-js/v3.2.0/mapbox-gl.css" rel="stylesheet">
-		<script src="https://api.mapbox.com/mapbox-gl-js/v3.2.0/mapbox-gl.js"></script>
-		
 	</head>
 
 	<body onload="LoadInitialContent()">
@@ -72,6 +68,26 @@
 		  <a class="nav-link text-black" href="#" type="button" class="text-dark" onclick="textChange(2)">Varusteet</a>
 		</li>
 </div>
+
+<footer class="text-center text-lg-staart bg-body-tertiary text-muted">
+		<div>
+		<div>
+			<img src="./ui/Instagram_Glyph_Black.png" width="20px" height="20px">
+		</div>
+		<br>
+		<div>
+			<a href="https://www.instagram.com/superkaisu/" class="me-4 text-reset">superkaisu</a>
+		</div>
+		<br>
+		<br>
+	</div>
+		<div>
+			<p>© 2024 Roots - Kaisu Suurniemi</p>
+		</div>
+
+</footer>
+
+</div>
 			<div id="BrCr">
 				<nav aria-label="breadcrumb">
 					<ol class="breadcrumb  bg-secondary text-white">
@@ -109,6 +125,21 @@
 				document.getElementById("roots_page").innerHTML = resourcesHTML;
 				document.getElementById("BrCr").innerHTML = resourcesBrCrHTML
 			}
+			else if (index == 3)
+			{
+				document.getElementById("roots_page").innerHTML = targetKallavesiHTML;
+				document.getElementById("BrCr").innerHTML = targetKallavesiBrCrHTML;
+			}
+			else if (index == 4)
+			{
+				document.getElementById("roots_page").innerHTML = targetOulankaHTML;
+				document.getElementById("BrCr").innerHTML = targetOulankaBrCrHTML;
+			}
+			else if (index == 5)
+			{
+				document.getElementById("roots_page").innerHTML = targetRokuaHTML;
+				document.getElementById("BrCr").innerHTML = targetRokuaBrCrHTML;
+			}
 		};
 
 		//Mapboxin kartan luonti
@@ -142,38 +173,100 @@
 											<br>\
 											Tietojenkäsittelyn opiskelija.\ <br><br>\
 											Olen harrastanut metsissä oleskelua koko ikäni, välillä enemmän, välillä vähemmän.\ <br><br>\
-											Tavoitteenani on käydä Suomen jokaisessa kansallispuistossa, ja toki kiertää muitakin luontokohteita siinä sivussa.\
+											Tavoitteenani on käydä Suomen jokaisessa kansallispuistossa, ja toki kiertää muitakin luontokohteita siinä sivussa.\ <br>\
 											Kirjoitan blogia näistä reissuista, asioista, joita olen oppinut retkeillessäni, varusteista ja ruuasta sekä muusta.\ <br><br>\
-											Täältä et löydä grammanviilausta tai hifi-varusteita.\
-											Kaikki on toteutettu aika minimaalisella budjetilla ja varuste-arsenaalikin täydentyy vuosien kuluessa.\
+											Täältä et löydä grammanviilausta tai hifi-varusteita.\ <br>\
+											Kaikki on toteutettu aika minimaalisella budjetilla ja varuste-arsenaalikin täydentyy vuosien kuluessa.\ <br><br>\
+											Tämä sivusto on samalla harjoitustyöni kurssille Web- ja mobiilikäyttöliittymät.\ <br>\
+											Tarkoituksena on ollut harjoitella HTML-, CSS- ja JavaScript-kielten käyttöä\
+											ja responsiivista web-designia.\
 										</p>\
 										</div>\
 										<br>\
 										<div class=\"col-sm-12 container\">\
 											<img src=\"./ui/retkeilija_nelio.jpg\" alt=\"Retkeilijä\ height=\"400px\" width=\"200px\" style=\"border-radius: 50%\">\
 										</div>\
+										<br>\
+										<br>\
 										</div>";
 		
-		var showreelHTML = "<div class=\"col-sm-12 p-3 bg-light text-dark min-vh-100 \">\
-							<div>\
-							  <h5 id=\"Perception\">Kallavesi</h5>\
-							  <img src=\"./ui/kallavesi.jpg\" alt=\"Kallavesi\" height=\"200px\" width=\"200px\">\
-							  <p></p>\
-							  <h5 id=\"Knowledge Representation\">Oulanka</h5>\
-							  <img src=\"./ui/oulanka.jpg\" alt=\"Oulanka\" height=\"200px\" width=\"200px\">\
-							  <br>\
-							  <div class=\"row w-100\">\
-								<div id=\"map\"></div>\
-  							</div>\
-							  <p></p>\
-							  <h5 id=\"Reasoning and Problem Solving\">Rokua</h5>\
-							  <img> src=\"./ui/rokua.jpg\" alt=\"Rokua\" height=\"200px\" width=\"200px\">\
-							  <p></p>\
-							  </div>\
+		var showreelHTML = "<div class=\"col-sm-2 bg-light text-dark min-vh-100 \">\
+								<nav class=\"nav flex-column\">\
+									<a class=\"nav-link\" href=\"#Kallavesi\">Kallavesi</a>\
+									<a class=\"nav-link\" href=\"#Oulanka\">Oulanka</a>\
+									<a class=\"nav-link\" href=\"#Rokua\">Rokua</a>\
+								</nav>\
 							</div>\
-						</div>";
+							<div class=\"col-sm-10 bg-light text-dark min-vh-100 \">\
+								<div class=\"col-sm-12\">\
+							  <h3 id=\"Kallavesi\">Kallavesi</h3>\
+								<br>\
+							  	<div class=\"col-sm-12\">\
+									<a href=\"#\" onClick=\"textChange(3)\">\
+										<img src=\"./ui/Kallavesi/auringonlasku1.jpg\" alt=\"Kallavesi\" height=\"30%\" width=\"100%\">\</div>\
+									</a>\
+								</div>\
+								<br>\
+								<br>\
+								<br>\
+							  	<h3 id=\"Oulanka\">Oulanka</h3>\
+								<br>\
+									<div class=\"col-sm-12\">\
+										<a href=\"#\" onClick=\"textChange(4)\">\
+							  				<img src=\"./ui/Oulanka/nakyma_rukan_liepeilta1.jpg\" alt=\"Oulanka\" height=\"30%\" width=\"100%\">\
+										</a>\
+									</div>\
+								<br>\
+								<br>\
+								<br>\
+							  <h3 id=\"Rokua\">Rokua</h3>\
+								<br>\
+							  	<div class=\"col-sm-12\">\
+									<a href=\"#\" onClick=\"textChange(5)\">\
+							  			<img src=\"./ui/Rokua/harjua1.jpg\" alt=\"Rokua\" height=\"30%\" width=\"100%\">\
+							  		</a>\
+								</div>\
+								<br>\
+								<br>\
+								<br>\
+							</div>";
 		
+		var targetKallavesiHTML = "<div class=\"col-sm-12 bg-light text-dark min-vh-100 row\">\
+								<div class=\"col-sm-6 flex-column\">\
+									<h3 id=\"Kallavesi\">Kallavesi</h3>\
+									<h6>Kuopiota halaava Iso-Kallan järvi</h6>\
+								</div>\
+								<div class=\"col-sm-6 flex-column\">\
+									<p>\
+										Kallavesi on upea järvi, ja kuopiolaisille hyvin rakas retkeily, veneily ja kalastuskohde.\ <br>\
+										Yleensä puhutaan Kallaveden etelä- ja pohjoisosista, jotka eroavat toisistaan etenkin melojan näkökulmasta.\ <br>\
+										Etelä-Kallavedellä on enemmän saaria ja niemenkärkiä, pohjoisessa taas on enemmän avointa vettä ja lahtia.\ <br><br>\
+										Pohjois-Kallaveden rantojen retkikohteista suosin <a href=\"https://puijonlatu.fi/yhdistys/pilpan-maja/\">Pilppaa</a>, joka on Puijon latu ry:n ylläpitämä latukahvio ja retkeilykohde.\ <br>\
+										Ja talvella on upeaa retkeillä jäätä pitkin Kaijansaaren eteläkärjen laavulle, josta avautuu huima näkymä järvelle.\ <br><br>\
+										Etelä-Kallavesi on suosittu veneilykohde ja siellä on useita saaria, joilla voi yöpyä ja retkeillä.\ <br>\
+										Pidän Etelä-Kallavedestä melontakohteena.\
+									</p>\
+									<img src=\"./ui/Kallavesi/kajakki.jpg\" alt=\"Melomaan lähdössä\" class=\"img-container\" height=\"50%\" width=\"30%\">\
+								</div>\
+							</div>";
+		var targetOulankaHTML = "<div class=\"col-sm-12 bg-light text-dark min-vh-100 row\">\
+								<div class=\"col-sm-6\">\
+									<p>Testi</p>\
+								</div>\
+								<div class=\"col-sm-6\">\
+									<p>Testi</p>\
+								</div>\
+							</div>";
+		var targetRokuaHTML = "<div class=\"col-sm-12 bg-light text-dark min-vh-100 row\">\
+								<div class=\"col-sm-6\">\
+									<p>Testi</p>\
+								</div>\
+								<div class=\"col-sm-6\">\
+									<p>Testi</p>\
+								</div>\
+							</div>";
 							
+
 		var resourcesHTML = "<div class=\"col-sm-12 bg-light text-dark min-vh-100\">\
 						Links here, please.\
 						</div>";		
@@ -191,6 +284,24 @@
 								<ol class=\"breadcrumb bg-secondary text-white\">\
 									<li class=\" bg-secondary text-white\">You're at:&nbsp;</li>\
 									<li class=\"breadcrumb-item active bg-secondary text-white\"aria-current=\"page\">Kohteet</li>\
+								</ol>\
+							</nav>";
+							var targetKallavesiBrCrHTML = "<nav aria-label=\"breadcrumb\">\
+								<ol class=\"breadcrumb bg-secondary text-white\">\
+									<li class=\" bg-secondary text-white\">You're at:&nbsp;</li>\
+									<li class=\"breadcrumb-item active bg-secondary text-white\"aria-current=\"page\">Kallavesi</li>\
+								</ol>\
+							</nav>";
+							var targetOulankaBrCrHTML = "<nav aria-label=\"breadcrumb\">\
+								<ol class=\"breadcrumb bg-secondary text-white\">\
+									<li class=\" bg-secondary text-white\">You're at:&nbsp;</li>\
+									<li class=\"breadcrumb-item active bg-secondary text-white\"aria-current=\"page\">Oulanka</li>\
+								</ol>\
+							</nav>";
+							var targetRokuaBrCrHTML = "<nav aria-label=\"breadcrumb\">\
+								<ol class=\"breadcrumb bg-secondary text-white\">\
+									<li class=\" bg-secondary text-white\">You're at:&nbsp;</li>\
+									<li class=\"breadcrumb-item active bg-secondary text-white\"aria-current=\"page\">Rokua</li>\
 								</ol>\
 							</nav>";
 		var resourcesBrCrHTML = "<nav aria-label=\"breadcrumb\">\

@@ -26,6 +26,13 @@
 	margin-top: 10px;
 }
 
+.img-container{
+	display: flex;
+	justify-content: center;
+	width: 30%;
+	margin-top: 15px;
+}
+
 #map { position: absolute; top: 0; bottom: 0; width: 100%; }
 
 p{
