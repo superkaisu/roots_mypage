@@ -12,6 +12,13 @@
 		<!-- Oma css-tiedosto -->
         <link rel="stylesheet" href="tyyli.css">
 
+		<!-- Mapboxin tarvitsemat linkitykset -->
+		<link href="https://api.mapbox.com/mapbox-gl-js/v3.2.0/mapbox-gl.css" rel="stylesheet">
+		<script src="https://api.mapbox.com/mapbox-gl-js/v3.2.0/mapbox-gl.js"></script>
+
+		<script src='https://api.mapbox.com/mapbox-gl-js/v2.9.1/mapbox-gl.js'></script>
+		<link href='https://api.mapbox.com/mapbox-gl-js/v2.9.1/mapbox-gl.css' rel='stylesheet' />
+
 	</head>
 
 	<body onload="LoadInitialContent()">
@@ -53,6 +60,7 @@
 		<!-- Sisältöalue -->
 		<div class="container-fluid bg-white min-vh-100 ">
 			<div class="row" id="roots_page">
+			</div>
 			</div>
 
 <!-- Navigointipalkki -->
@@ -98,7 +106,7 @@
 			</div>
 
 		</div>
-		
+
 		<!-- JavaScript-toiminnallisuus -->
 
 		<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
@@ -149,22 +157,15 @@
 		// Täältä pääsee jakamaan linkkii??
 		//https://studio.mapbox.com/tilesets/superkaisu.cltokovj901ew1uqrtvx4yema-2a8ji/#0.75/0/29.1
 
-		/*mapboxgl.accessToken = 'pk.eyJ1Ijoic3VwZXJrYWlzdSIsImEiOiJjbHRvazh1cTUwZjNlMmpueThkODliNmIxIn0.wn7oRotjKyW1ep01XRJs-g';
-    		const map = new mapboxgl.Map({
-        	container: 'map', // container ID
-        	center: [-74.5, 40], // starting position [lng, lat]
-        	zoom: 9 // starting zoom
-   		 });*/
-
 		// Sisältötekstit
 
 		var indexHTML = "<img src=\"./ui/tausta.jpg\" alt=\"View from Kuopionlahti\" width=\"100%\" height=\"100%\">\
 							<div class=\"col-sm-12  bg-light text-dark min-vh-100\">\
-								<h3 class=\"mainpage-own\">Retkillä kotimaan kansallispuistoissa</h3>\
-								<br>\
+								<br>\ <br>\ <br>\
+								<h2 class=\"mainpage-own\">Retkillä kotimaan kansallispuistoissa</h2>\
 									<div class=\"col-sm-4 container\">\
 									<div class=\"embed-responsive embed-responsive-1by1\">\
-										<video class=\"embed-responsive-item\" src=\"./ui/Hidastettu_kahvikuppibomerang.mp4\" autoplay>\
+										<video class=\"embed-responsive-item\" alt=\"Hidastettu boomerang höyryävästä kahvikupillisesta\" src=\"./ui/Hidastettu_kahvikuppibomerang.mp4\" autoplay>\
 										</video>\
 									</div>\
 									</div>\
@@ -182,8 +183,8 @@
 											ja responsiivista web-designia.\
 										</p>\
 										</div>\
-										<br>\
-										<div class=\"col-sm-12 container\">\
+										<br>\ <br>\ <br>\ <br>\
+										<div class=\"col-sm-12 own-container\">\
 											<img src=\"./ui/retkeilija_nelio.jpg\" alt=\"Retkeilijä\ height=\"400px\" width=\"200px\" style=\"border-radius: 50%\">\
 										</div>\
 										<br>\
@@ -232,12 +233,23 @@
 							</div>";
 		
 		var targetKallavesiHTML = "<div class=\"col-sm-12 bg-light text-dark min-vh-100 row\">\
-								<div class=\"col-sm-6 flex-column\">\
+								<div class=\"col-sm-6 flex-column\" style=\"text-align: center;\">\
+									<br>\
+									<br>\<br>\
+									<br>\
 									<h3 id=\"Kallavesi\">Kallavesi</h3>\
-									<h6>Kuopiota halaava Iso-Kallan järvi</h6>\
+									<h5>Kuopiota halaava Iso-Kallan järvi</h5>\
+								</div>\
+								<div class=\"col-sm-6 own-container\">\
+									<img src=\"./ui/Kallavesi/jaatynyt_aalto.jpg\" alt=\"Jäätynyt aalto\" class=\"frozen-wave\" height=\"200px\" width=\"440px\">\
+								</div>\
+								<div class=\"col-sm-6 own-container\">\
+									<img src=\"./ui/Kallavesi/kajakki.jpg\" alt=\"Melomaan lähdössä\" class=\"img-container kayak\" height=\"300px\" width=\"100px\">\
 								</div>\
 								<div class=\"col-sm-6 flex-column\">\
 									<p>\
+									<br>\
+									<br>\
 										Kallavesi on upea järvi, ja kuopiolaisille hyvin rakas retkeily, veneily ja kalastuskohde.\ <br>\
 										Yleensä puhutaan Kallaveden etelä- ja pohjoisosista, jotka eroavat toisistaan etenkin melojan näkökulmasta.\ <br>\
 										Etelä-Kallavedellä on enemmän saaria ja niemenkärkiä, pohjoisessa taas on enemmän avointa vettä ja lahtia.\ <br><br>\
@@ -246,31 +258,101 @@
 										Etelä-Kallavesi on suosittu veneilykohde ja siellä on useita saaria, joilla voi yöpyä ja retkeillä.\ <br>\
 										Pidän Etelä-Kallavedestä melontakohteena.\
 									</p>\
-									<img src=\"./ui/Kallavesi/kajakki.jpg\" alt=\"Melomaan lähdössä\" class=\"img-container\" height=\"50%\" width=\"30%\">\
 								</div>\
 							</div>";
 		var targetOulankaHTML = "<div class=\"col-sm-12 bg-light text-dark min-vh-100 row\">\
-								<div class=\"col-sm-6\">\
-									<p>Testi</p>\
+								<div class=\"col-sm-6 flex-column\" style=\"text-align: center;\">\
+									<br>\
+									<br>\<br>\
+									<br>\
+									<h3 id=\"Oulanka\">Oulanka</h3>\
+									<h5>Legendaarinen Karhunkierros, 82km upeaa luontoa</h5>\
 								</div>\
-								<div class=\"col-sm-6\">\
-									<p>Testi</p>\
+								<div class=\"col-sm-6 own-container\">\
+									<img src=\"./ui/Oulanka/retkihattu.jpg\" alt=\"Tärkeä päähine\" class=\"img-container frozen-wave\" height=\"200px\" width=\"200px\">\
 								</div>\
-							</div>";
+								<div class=\"col-sm-6 own-container\">\
+									<img src=\"./ui/Oulanka/koski.jpg\" alt=\"Koski\" class=\"kayak\" height=\"250px\" width=\"340px\">\
+								</div>\
+								<div class=\"col-sm-6 flex-column\">\
+									<p>\
+									<br>\
+									<br>\
+										Oulangan kansallispuiston Karhunkierros on laajalti tunnettu.\ <br>\
+										82 kilometrin mittaisen matkan voi kulkea kohti pohjoista, lähtöpisteenä Ruka,\ <br>\
+										tai pohjoisesta etelään, jolloin lähtöpaikkana on Hautajärvi.\ <br><br>\
+										Meidän retkemme vei pohjoisesta etelään ja kesti  hyvinkin tasan 4 päivää. Vaelsimme noin 17-23km päivävauhtia.\
+										Yhtenäkään päivänä vauhti ei tuntunut liian kovalta, mutta 27 asteen helle tuotti omanlaistaan tuskaa.\ <br><br>\
+										Pohjoisessa metsä oli myös _aivan_ täynnä hyttysiä ja mäkäräisiä.\ <br>\
+										Mieti kaksi kertaa onko heinäkuu hyvää aikaa vaeltaa Pohjois-Suomessa.\
+										Meille se sattui näyttämään toisaalta parastaan, pienistä hyönteisparvista ja kuumasta säästä huolimatta!\
+									</p>\
+								</div>\
+								</div>\
+								</div>";
 		var targetRokuaHTML = "<div class=\"col-sm-12 bg-light text-dark min-vh-100 row\">\
-								<div class=\"col-sm-6\">\
-									<p>Testi</p>\
+								<div class=\"col-sm-6 flex-column\" style=\"text-align: center;\">\
+									<br>\
+									<br>\<br>\
+									<br>\
+									<br>\<br>\
+									<h3 id=\"Rokua\">Rokua</h3>\
+									<h5>Harjua ja mäntymetsää</h5>\
 								</div>\
-								<div class=\"col-sm-6\">\
-									<p>Testi</p>\
+								<div class=\"col-sm-6 own-container\">\
+									<img src=\"./ui/Rokua/harjua.jpg\" alt=\"Harjua\" class=\"frozen-wave\" height=\"250px\" width=\"380px\">\
+								</div>\
+								<div class=\"col-sm-6 own-container\">\
+									<img src=\"./ui/Rokua/juurakko.jpg\" alt=\"Juurakko\" class=\"img-container kayak\" height=\"300px\" width=\"100px\">\
+								</div>\
+								<div class=\"col-sm-6 flex-column\">\
+									<p>\
+									<br>\
+									<br>\
+										Rokuan kansallispuisto sijaitsee Oulun ja Kajaanin välillä.\ <br>\
+										Kansallispuiston maasto on varmaan kuivinta kaikista puistoista, joissa olen käynyt.\ <br>\
+										Harjujen hienojakoinen hiekka suodattaa maastoon sataneen veden pohjavesiksi.\ <br><br>\
+										Rokuan kansallispuisto on osa Rokua Geoparkia, joka on ensimmäinen suomalainen kohde UNESCOn ainutlaatuisten geologisten kohteiden verkostossa.\ <br>\
+										Rokualla on hyvin ylläpidetyt maastopyöräreitit. Pyöräilijöitä näkyikin vaelluksemme aikana runsaasti.\ <br><br>\
+										Maastopyöräilyn etiketistä löydät lisätietoja <a href=\"https://www.luontoon.fi/pyoraily/maastopyoraily\">Luontoon.fi<a/>\.<br>\
+										Rokua on varsin helppokulkuista maastoa ja erikoisuutena kohteen korkealta mäeltä löytyy palotorni, jossa pääsee vierailemaan.\
+									</p>\
 								</div>\
 							</div>";
 							
 
-		var resourcesHTML = "<div class=\"col-sm-12 bg-light text-dark min-vh-100\">\
-						Links here, please.\
-						</div>";		
-	
+		var resourcesHTML = "<div class=\"col-sm-12 bg-light text-dark min-vh-100 row\">\
+								<div class=\"col-sm-6 flex-column\" style=\"text-align: center;\">\
+									<br>\
+									<br>\<br>\
+									<br>\
+									<br>\<br>\
+									<h3 id=\"Eväät\">Eväät</h3>\
+									<h5>Ruoka on tärkeä osa vaellusta</h5>\
+								</div>\
+								<div class=\"col-sm-6 own-container\">\
+									<img src=\"./ui/Ruuanlaitto/kahvi.jpg\" alt=\"Kahvia\" class=\"frozen-wave\" height=\"300px\" width=\"280px\">\
+								</div>\
+								<div class=\"col-sm-6 own-container\">\
+									<img src=\"./ui/Ruuanlaitto/ruuanlaitto.jpg\" alt=\"Ruuanlaittoa\" class=\"kayak\" height=\"250px\" width=\"400px\">\
+								</div>\
+								<div class=\"col-sm-6 flex-column\">\
+									<p>\
+									<br>\
+									<br>\
+									Retkeen kuuluu olennaisesti myös herkullinen ja täyttävä ruokailu ulkosalla.\
+									Mitäpä olisi retki ilman kuumaa kahvia nuotion ääressä tai maukasta eväsleipää luonnon helmassa?\ <br>\
+									Retkieväiden suunnittelu kannattaa aloittaa hyvissä ajoin ennen itse retkeä. <br> Mieti retken kesto ja olosuhteet,\
+									jotta voit valita sopivat ruoka-aineet ja varusteet. <br> Muista pakata mukaan riittävästi energiapitoista ja helposti valmistettavaa ruokaa.\
+									Hyviä vaihtoehtoja ovat esimerkiksi kuivamuona, retkiruokapaketit ja erilaiset säilykkeet.\ <br>\
+									Kahvi on monelle retkeilijälle tärkeä osa ruokailua. Kuuma kuppi kahvia antaa energiaa ja lämmintä oloa viileälläkin säällä. <br>\
+									Voit keittää kahvin retkikeittimellä tai trangialla. Muista pakata mukaan myös kahvinporot, sokeri ja maito tai kerma.\ <br><br>\
+									Retkieväiden suunnittelussa kannattaa huomioida myös ympäristönäkökulma. Pakkaa roskat mukaasi ja vältä kertakäyttöastioita.\
+									Käytä esimerkiksi uudelleentäytettävää vesipulloa ja termospulloa.\
+									Nauti herkullisista retkieväistä ja luonnon rauhasta!.\
+									</p>\
+								</div>\
+							</div>";
 
 		// Breadcrumb-tekstit
 						
@@ -318,3 +400,5 @@
 	  </script>
 	</body>
 </html>
+
+
